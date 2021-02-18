@@ -13,14 +13,16 @@
 <div class="container">
     <div class="row" id="app">
         <div class="col-12">
-            <h3 class="text-center mt-5 mb-3">Chat room</h3>
+            <h3 class="text-center mt-5 mb-3">Chat room <span class="badge badge-info">@{{ numberOfUsers
+                    }}</span></h3>
+            <div class="badge badge-info">@{{ typing }}</div>
             <ul class="list-group" style="height: 500px; overflow-y: scroll " v-chat-scroll>
-                <message-component v-for="value in chat.message" :key=value.index>
+                <message-component v-for="value,index in chat.message" :key=value.index :user = chat.user[index] :time = chat.time[index]>
                     @{{ value }}
                 </message-component>
             </ul>
             <div class="form-group mt-3">
-                <input type="text" class="form-control" placeholder="Write message" v-model="message" @keyup.enter="send">
+                    <input type="text" class="form-control"  placeholder="Write message" v-model="message" @keyup.enter="send">
             </div>
 
         </div>

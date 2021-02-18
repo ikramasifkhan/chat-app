@@ -19,11 +19,11 @@ Route::get('/', function () {
 });
 
 
-
-Route::get('/chat', [ChatController::class, 'index'])->name('chat');
-Route::get('/send', [ChatController::class, 'send'])->name('send');
-
 Auth::routes();
+Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+Route::post('/send-text', [ChatController::class, 'send'])->name('send');
+
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
